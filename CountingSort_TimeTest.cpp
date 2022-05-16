@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<iostream> //С++
-#include<chrono> //С++
-/*void CountingSort(int array[], int size) { //собсна сам вызов функции сортировки подсчетом
+#include<iostream> //РЎ++
+#include<chrono> //РЎ++
+/*void CountingSort(int array[], int size) { //СЃРѕР±СЃРЅР° СЃР°Рј РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕРґСЃС‡РµС‚РѕРј
     int max = array[0];
     for (int i = 1; i < size; i++)
         if (array[i] > max)
@@ -27,12 +27,12 @@
     for (int i = 0; i < size; i++)
         array[i] = out[i];
     free(out);
-    //free(count); //а почему оно так работает, мы не знаем и никогда не узнаем...
+    //free(count); //Р° РїРѕС‡РµРјСѓ РѕРЅРѕ С‚Р°Рє СЂР°Р±РѕС‚Р°РµС‚, РјС‹ РЅРµ Р·РЅР°РµРј Рё РЅРёРєРѕРіРґР° РЅРµ СѓР·РЅР°РµРј...
 } */
 
-//m — указатель на начало массива
- //n — размер массива
-void CountingSort(int* m, int n) { //функция сортировки (попытка 2)
+//m вЂ” СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ РјР°СЃСЃРёРІР°
+ //n вЂ” СЂР°Р·РјРµСЂ РјР°СЃСЃРёРІР°
+void CountingSort(int* m, int n) { //С„СѓРЅРєС†РёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё (РїРѕРїС‹С‚РєР° 2)
     int max = m[0];
     for (int i = 1; i < n; i++)
         if (m[i] > max)
@@ -54,17 +54,17 @@ void CountingSort(int* m, int n) { //функция сортировки (попытка 2)
     free(c);
 }
 
-void printArray(int *m, int size) { //функция распечатки массива
+void printArray(int *m, int size) { //С„СѓРЅРєС†РёСЏ СЂР°СЃРїРµС‡Р°С‚РєРё РјР°СЃСЃРёРІР°
     for (int i = 0; i < size; ++i)
         printf("%d ", m[i]);
 }
 
-void ScanArray(int *m, int n) { //фукнция ввода массива
+void ScanArray(int *m, int n) { //С„СѓРєРЅС†РёСЏ РІРІРѕРґР° РјР°СЃСЃРёРІР°
     for (int i = 0; i < n; ++i)
         scanf_s("%d", &m[i]);
 }
 
-void RandArray(int* m, int n) { //функция ввода случайных чисел массива
+void RandArray(int* m, int n) { //С„СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РјР°СЃСЃРёРІР°
     int min, max;
     puts("Input min number");
     scanf_s("%d", &min);
@@ -75,7 +75,7 @@ void RandArray(int* m, int n) { //функция ввода случайных чисел массива
         m[i] = rand() % (max - min + 1) + min;
 }
 
-/*void RandArray(int* m, int n) { //функция ввода случайных неповторяющихся чисел массива
+/*void RandArray(int* m, int n) { //С„СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃР»СѓС‡Р°Р№РЅС‹С… РЅРµРїРѕРІС‚РѕСЂСЏСЋС‰РёС…СЃСЏ С‡РёСЃРµР» РјР°СЃСЃРёРІР°
     int min, max, fl1 = 0, fl2 = 0, ch = 0;
     puts("Input min number");
     scanf_s("%d", &min);
@@ -106,26 +106,26 @@ void RandArray(int* m, int n) { //функция ввода случайных чисел массива
 int main() {
     int n, r;
     printf("Input the number of elements: ");
-    scanf_s("%d", &n); //вводим количество элементов
-    puts("Your array - 0, rand array - other"); //выбираем свой или рандом массив
+    scanf_s("%d", &n); //РІРІРѕРґРёРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
+    puts("Your array - 0, rand array - other"); //РІС‹Р±РёСЂР°РµРј СЃРІРѕР№ РёР»Рё СЂР°РЅРґРѕРј РјР°СЃСЃРёРІ
     scanf_s("%d", &r);
-    int* m = (int*)malloc(n * sizeof(int)); //выделяем память
+    int* m = (int*)malloc(n * sizeof(int)); //РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ
     if (r == 0) {
         printf("Input the elements\n");
-        ScanArray(m, n); //вводим массив
+        ScanArray(m, n); //РІРІРѕРґРёРј РјР°СЃСЃРёРІ
     }
-    else RandArray(m, n); //ну или рандом массив
+    else RandArray(m, n); //РЅСѓ РёР»Рё СЂР°РЅРґРѕРј РјР°СЃСЃРёРІ
 
     puts("Unsorted Array");
-    printArray(m, n); //вывод неотсортированного массива
+    printArray(m, n); //РІС‹РІРѕРґ РЅРµРѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР°
     printf("\n"); 
-    auto begin = std::chrono::steady_clock::now(); //начало подсчета времени выполнения проги (С++)
-    CountingSort(m, n); //сортируем
-    auto end = std::chrono::steady_clock::now(); //С++
-    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin); //С++
-    std::cout << "Time: " << elapsed_ms.count() << " nanoseconds\n"; //конец подсчета
+    auto begin = std::chrono::steady_clock::now(); //РЅР°С‡Р°Р»Рѕ РїРѕРґСЃС‡РµС‚Р° РІСЂРµРјРµРЅРё РІС‹РїРѕР»РЅРµРЅРёСЏ РїСЂРѕРіРё (РЎ++)
+    CountingSort(m, n); //СЃРѕСЂС‚РёСЂСѓРµРј
+    auto end = std::chrono::steady_clock::now(); //РЎ++
+    auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin); //РЎ++
+    std::cout << "Time: " << elapsed_ms.count() << " nanoseconds\n"; //РєРѕРЅРµС† РїРѕРґСЃС‡РµС‚Р°
     printf("Sorted array\n");
-    printArray(m, n); //вывод сортированного массива
+    printArray(m, n); //РІС‹РІРѕРґ СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР°
     free(m);
     //getch();
    }
