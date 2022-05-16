@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void CountingSort(int* m, int n) { //функция сортировки (попытка 2)
+void CountingSort(int* m, int n) { //С„СѓРЅРєС†РёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё (РїРѕРїС‹С‚РєР° 2)
     int max = m[0];
     for (int i = 1; i < n; i++)
         if (m[i] > max)
@@ -23,17 +23,17 @@ void CountingSort(int* m, int n) { //функция сортировки (попытка 2)
     free(c);
 }
 
-void printArray(int* m, int size) { //функция распечатки массива
+void printArray(int* m, int size) { //С„СѓРЅРєС†РёСЏ СЂР°СЃРїРµС‡Р°С‚РєРё РјР°СЃСЃРёРІР°
     for (int i = 0; i < size; ++i)
         printf("%d ", m[i]);
 }
 
-void ScanArray(int* m, int n) { //фукнция ввода массива
+void ScanArray(int* m, int n) { //С„СѓРєРЅС†РёСЏ РІРІРѕРґР° РјР°СЃСЃРёРІР°
     for (int i = 0; i < n; ++i)
         scanf_s("%d", &m[i]);
 }
 
-void RandArray(int* m, int n) { //функция ввода случайных чисел массива
+void RandArray(int* m, int n) { //С„СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РјР°СЃСЃРёРІР°
     int min, max;
     puts("Input min number");
     scanf_s("%d", &min);
@@ -47,22 +47,22 @@ void RandArray(int* m, int n) { //функция ввода случайных чисел массива
 int main() {
     int n, r;
     printf("Input the number of elements: ");
-    scanf_s("%d", &n); //вводим количество элементов
-    puts("Your array - 0, rand array - other"); //выбираем свой или рандом массив
+    scanf_s("%d", &n); //РІРІРѕРґРёРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
+    puts("Your array - 0, rand array - other"); //РІС‹Р±РёСЂР°РµРј СЃРІРѕР№ РёР»Рё СЂР°РЅРґРѕРј РјР°СЃСЃРёРІ
     scanf_s("%d", &r);
-    int* m = (int*)malloc(n * sizeof(int)); //выделяем память
+    int* m = (int*)malloc(n * sizeof(int)); //РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ
     if (r == 0) {
         printf("Input the elements\n");
-        ScanArray(m, n); //вводим массив
+        ScanArray(m, n); //РІРІРѕРґРёРј РјР°СЃСЃРёРІ
     }
-    else RandArray(m, n); //ну или рандом массив
+    else RandArray(m, n); //РЅСѓ РёР»Рё СЂР°РЅРґРѕРј РјР°СЃСЃРёРІ
 
     puts("Unsorted Array");
-    printArray(m, n); //вывод неотсортированного массива
+    printArray(m, n); //РІС‹РІРѕРґ РЅРµРѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР°
     printf("\n");
-    CountingSort(m, n); //сортируем
+    CountingSort(m, n); //СЃРѕСЂС‚РёСЂСѓРµРј
     printf("Sorted array\n");
-    printArray(m, n); //вывод сортированного массива
+    printArray(m, n); //РІС‹РІРѕРґ СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР°
     free(m);
     //getch();
 }
