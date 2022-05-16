@@ -3,14 +3,14 @@
 #include <time.h>
 #include <chrono>
 #include <iostream>
-void swap(int* a, int* b) { //функция обмена указателей
+void swap(int* a, int* b) { //С„СѓРЅРєС†РёСЏ РѕР±РјРµРЅР° СѓРєР°Р·Р°С‚РµР»РµР№
     int t = *a; 
     *a = *b;
     *b = t;
 }
 
-int partition(int array[], int low, int high) { //алгоритм переупорядочивания
-    int pivot = array[high]; //разрешающий элемент
+int partition(int array[], int low, int high) { //Р°Р»РіРѕСЂРёС‚Рј РїРµСЂРµСѓРїРѕСЂСЏРґРѕС‡РёРІР°РЅРёСЏ
+    int pivot = array[high]; //СЂР°Р·СЂРµС€Р°СЋС‰РёР№ СЌР»РµРјРµРЅС‚
 
     int i = (low - 1);
 
@@ -24,7 +24,7 @@ int partition(int array[], int low, int high) { //алгоритм переупорядочивания
     return (i + 1);
 }
 
-void quickSort(int array[], int low, int high) { //функция быстрой сортировки
+void quickSort(int array[], int low, int high) { //С„СѓРЅРєС†РёСЏ Р±С‹СЃС‚СЂРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
     if (low < high) {
         int pi = partition(array, low, high);
         quickSort(array, low, pi - 1);
@@ -32,16 +32,16 @@ void quickSort(int array[], int low, int high) { //функция быстрой сортировки
     }
 }
 
-void printArray(int *m, int n) { //функция вывода массива
+void printArray(int *m, int n) { //С„СѓРЅРєС†РёСЏ РІС‹РІРѕРґР° РјР°СЃСЃРёРІР°
     for (int i = 0; i < n; i++)
         printf("%d ", m[i]);
 }
 
-void ScanArray(int* m, int n) { //функция ввода своего массива
+void ScanArray(int* m, int n) { //С„СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃРІРѕРµРіРѕ РјР°СЃСЃРёРІР°
     for (int i = 0; i < n; i++)
         scanf_s("%d", &m[i]);
 }
-void RandArray(int* m, int n) { //функция ввода случайных чисел массива
+void RandArray(int* m, int n) { //С„СѓРЅРєС†РёСЏ РІРІРѕРґР° СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РјР°СЃСЃРёРІР°
     int min, max;
     puts("Input min number");
     scanf_s("%d", &min);
@@ -55,26 +55,26 @@ void RandArray(int* m, int n) { //функция ввода случайных чисел массива
 int main() {
     int n, r;
     printf("Input the number of elements: ");
-    scanf_s("%d", &n); //вводим количество элементов
-    puts("Your array - 0, rand array - other"); //выбираем свой или рандом массив
+    scanf_s("%d", &n); //РІРІРѕРґРёРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
+    puts("Your array - 0, rand array - other"); //РІС‹Р±РёСЂР°РµРј СЃРІРѕР№ РёР»Рё СЂР°РЅРґРѕРј РјР°СЃСЃРёРІ
     scanf_s("%d", &r);
-    int* m = (int*)malloc(n * sizeof(int)); //выделяем память
+    int* m = (int*)malloc(n * sizeof(int)); //РІС‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ
     if (r == 0) {
         printf("Input the elements\n"); 
-        ScanArray(m, n); //вводим массив
+        ScanArray(m, n); //РІРІРѕРґРёРј РјР°СЃСЃРёРІ
     }
-    else RandArray(m, n); //ну или рандом массив
+    else RandArray(m, n); //РЅСѓ РёР»Рё СЂР°РЅРґРѕРј РјР°СЃСЃРёРІ
 
     puts("Unsorted array");
-    printArray(m, n); //вывод неотсортированного массива
+    printArray(m, n); //РІС‹РІРѕРґ РЅРµРѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР°
     printf("\n");
-    auto begin = std::chrono::steady_clock::now(); //начало подсчета времени выполнения проги (С++)
-    quickSort(m, 0, n - 1); //сортируем
+    auto begin = std::chrono::steady_clock::now(); //РЅР°С‡Р°Р»Рѕ РїРѕРґСЃС‡РµС‚Р° РІСЂРµРјРµРЅРё РІС‹РїРѕР»РЅРµРЅРёСЏ РїСЂРѕРіРё (РЎ++)
+    quickSort(m, 0, n - 1); //СЃРѕСЂС‚РёСЂСѓРµРј
     auto end = std::chrono::steady_clock::now();
     auto elapsed_ms = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-    std::cout << "Time: " << elapsed_ms.count() << " nanoseconds\n"; //конец подсчета, вывод времени в наносек.
+    std::cout << "Time: " << elapsed_ms.count() << " nanoseconds\n"; //РєРѕРЅРµС† РїРѕРґСЃС‡РµС‚Р°, РІС‹РІРѕРґ РІСЂРµРјРµРЅРё РІ РЅР°РЅРѕСЃРµРє.
     puts("Sorted array:");
-    printArray(m, n); //вывод сортированного массива
+    printArray(m, n); //РІС‹РІРѕРґ СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР°
     free(m);
     //getch();
     return 0;
