@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void CountingSort(int array[], int size) { //собсна сам вызов функции сортировки подсчетом
+void CountingSort(int array[], int size) { 
     int max = array[0];
     for (int i = 1; i < size; i++)
         if (array[i] > max)
@@ -26,7 +26,6 @@ void CountingSort(int array[], int size) { //собсна сам вызов фу
     for (int i = 0; i < size; i++)
         array[i] = out[i];
     free(out);
-    //free(count); //а почему оно так работает, мы не знаем и никогда не узнаем...
 }
 
 void printArray(int *m, int size) { //функция распечатки массива
